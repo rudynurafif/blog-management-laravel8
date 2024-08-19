@@ -1,5 +1,7 @@
 <?php
 
+// Model adalah sebuah kelas untuk mengelola tabel di dalam database
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +12,7 @@ class Post extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id']; // tidak boleh diisi atau rubah menggunakan metode mass assignment / create
     protected $with = ['category', 'author'];
 
     public function scopeFilter($query, array $filters)
@@ -33,7 +35,7 @@ class Post extends Model
         );
     }
 
-    public function category() // cara menghubungkan dgn tabel category
+    public function category() // method untuk menghubungkan dgn tabel category
     {
         return $this->belongsTo(Category::class);
     }

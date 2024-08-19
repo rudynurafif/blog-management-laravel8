@@ -18,9 +18,12 @@
   </head>
   <body>
 
-   @include('partials.navbar')
+    {{-- directive punya laravel --}}
+    @include('partials.navbar') 
+
 
     <div class="container mt-4">
+      {{-- directive punya laravel --}}
       @yield('container')
     </div>
 

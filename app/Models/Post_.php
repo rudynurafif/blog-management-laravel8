@@ -21,6 +21,7 @@ class Post // untuk menyimpan data dari postingan
 
     public static function all()
     {
+        // collection, membuat array biasa menjadi array yang bisa menggunakan banyak fungsi
         return collect(self::$blog_posts);
     }
 

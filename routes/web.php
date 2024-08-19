@@ -21,11 +21,11 @@ use App\Http\Controllers\DashboardPostController;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
     return view('home', [
         'title' => 'Home'
     ]);
 });
+
 
 Route::get('/about', function () {
     return view('about', [
@@ -39,7 +39,8 @@ Route::get('/about', function () {
 
 Route::get('/posts', [PostController::class, 'index']); // baru diedit
 
-Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/post/{post:slug}', [PostController::class, 'show']);
+
 
 Route::get('/categories', function() {
     return view('categories', [
@@ -49,12 +50,15 @@ Route::get('/categories', function() {
     ]);
 });
 
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+
 
 Route::get('/dashboard', function() {
     return view('dashboard.index');

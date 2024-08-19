@@ -30,7 +30,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function show(Post $post)
+    public function show(Post $post) // route model binding
     {
         return view('post', [
             "title" => "Single Post",

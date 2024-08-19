@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $guarded = ['id'];
 
-    public function posts()
+    public function posts() // method untuk menghubungkan dgn tabel posts (dua arah)
     {
         return $this->hasMany(Post::class);
     }
