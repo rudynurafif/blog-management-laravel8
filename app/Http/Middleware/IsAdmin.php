@@ -16,6 +16,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
+        // logic middleware is admin
         if(!auth()->check() || !auth()->user()->is_admin) {
             abort(403);
         }

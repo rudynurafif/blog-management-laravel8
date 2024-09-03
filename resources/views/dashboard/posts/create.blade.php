@@ -20,7 +20,7 @@
     </div>
     <div class="mb-3">
       <label for="slug" class="form-label">Slug <small>(what is <a href="https://yoast.com/slug/" target="_blank"><em>Slug?</em></a>)</small></label>
-      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}">
+      <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" readonly>
       @error('slug')
         <div class="invalid-feedback">
           {{ $message }}
@@ -40,7 +40,7 @@
       </select>
     </div>
     <div class="mb-3">
-      <label for="image" class="form-label">Image Post</label>
+      <label for="image" class="form-label">Image Post <small>(max. 2MB)</small></label>
       <img class="img-preview img-fluid mb-3 col-sm-5">
       <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
       @error('image')
@@ -67,7 +67,7 @@
   const title = document.querySelector('#title');
   const slug = document.querySelector('#slug');
 
-  title.addEventListener('change', function() {
+  title.addEventListener('keyup', function() {
     fetch('/dashboard/posts/checkSlug?title=' + title.value)
       .then(response => response.json())
       .then(data => slug.value = data.slug)
@@ -78,8 +78,8 @@
   })
 
   function previewImage() {
-    const image = document.querySelector('#image');
-    const imgPreview = document.querySelector('.img-preview');
+    const image = document.querySelector('#image'); // elemen input
+    const imgPreview = document.querySelector('.img-preview'); // elemen preview
 
     imgPreview.style.display = 'block';
 

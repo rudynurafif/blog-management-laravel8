@@ -12,7 +12,7 @@ class Post extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $guarded = ['id']; // tidak boleh diisi atau rubah menggunakan metode mass assignment / create
+    protected $guarded = ['id']; // tidak boleh diisi atau rubah menggunakan metode mass assignment / ::create
     protected $with = ['category', 'author'];
 
     public function scopeFilter($query, array $filters)
@@ -45,7 +45,7 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getRouteKeyName()
+    public function getRouteKeyName() // menjadikan slug sebagai default unique
     {
         return 'slug';
     }

@@ -16,11 +16,12 @@
       </form>
 
       @if ($post->image)
-        <div style="max-height: 350px; overflow:hidden">
+        <div style="max-height: 350px; overflow:hidden;">
           <img src="{{ asset('my_files/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid mt-3">
         </div>
       @else
-        <img src="https://picsum.photos/id/{{ $post->category->id }}/1200/600" alt="{{ $post->category->id }}" class="img-fluid mt-3">
+        {{-- <img src="https://picsum.photos/id/{{ $post->category->id }}/1200/600" alt="{{ $post->category->id }}" class="img-fluid mt-3"> --}}
+        <img src="https://picsum.photos/1200/600?random={{ $post->category->slug }}" alt="{{ $post->category->name }}" class="img-fluid mt-3">
       @endif
     
       <article class="my-3 fs-6">

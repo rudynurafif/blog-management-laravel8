@@ -30,19 +30,19 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about', [
         'title' => 'About',
-        'name' => 'Rudy Nurafif',
+        'name' => 'Rudy Nurafif',   
         'email' => 'rudynurafif@gmail.com',
         'image' => 'rudy.jpg'
     ]);
 });
 
 
-Route::get('/posts', [PostController::class, 'index']); // baru diedit
+Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
 
-Route::get('/categories', function() {
+Route::get('/categories', function() {  
     return view('categories', [
         'title' => 'Post Categories',
         // 'active' => 'categories',
